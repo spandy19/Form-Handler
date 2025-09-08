@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standard Pardot Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    form { max-width: 500px; margin: auto; }
+    label { display: block; margin: 10px 0 5px; }
+    input, textarea { width: 100%; padding: 8px; margin-bottom: 15px; }
+    .checkbox { display: flex; align-items: center; }
+    .checkbox input { margin-right: 8px; }
+    button { padding: 10px 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <form method="post" id="pardotForm">
+    <label for="name">Name:</label>
+    <input type="text" name="first_name" id="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required>
+
+    <div class="checkbox">
+      <input type="checkbox" name="consent" id="consent" required>
+      <label for="consent">I agree to the terms</label>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    // Retrieve the Pardot endpoint URL from the query parameter
+    const params = new URLSearchParams(window.location.search);
+    const endpoint = params.get("endpoint");
+
+    if (endpoint) {
+      document.getElementById("pardotForm").action = endpoint;
+    } else {
+      document.body.innerHTML = "<p style='color:red;'>Error: No Pardot endpoint provided.</p>";
+    }
+  </script>
+</body>
+</html>
