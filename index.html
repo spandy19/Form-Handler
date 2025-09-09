@@ -164,3 +164,14 @@
     }
 })();
 </script>
+<script>
+document.querySelector("form").addEventListener("submit", function() {
+  // Watch for Pardot redirect after submission
+  setTimeout(function() {
+    if (window.location !== window.parent.location) {
+      // Force thank-you page to open in full window instead of iframe
+      window.parent.location.href = "https://www.sisainfosec.com/wp-thank-you-page/";
+    }
+  }, 1500); // wait for Pardot to process
+});
+</script>
