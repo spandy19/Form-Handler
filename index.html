@@ -53,42 +53,35 @@
     margin-bottom: 15px;
   }
   button[type="submit"] {
-  background-color: #0073e6;  /* blue */
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 25px;        /* rounded */
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button[type="submit"]:hover {
-  background-color: #005bb5;  /* darker blue on hover */
-}
-
-/* Spacing between rows */
-.name-fields,
-.org-email-fields,
-.contact-country-fields {
-  display: flex;
-  gap: 15px;            /* space between fields in same row */
-  margin-bottom: 20px;  /* space between rows */
-}
-
-/* Ensure label is always above input/select */
-.name-fields > div,
-.org-email-fields > div,
-.contact-country-fields > div {
-  flex: 1;                     /* equal width fields */
-  display: flex;
-  flex-direction: column;      /* stack label on top */
-}
-  
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  button[type="submit"]:hover {
+    background-color: #005bb5;
+  }
+  .name-fields,
+  .org-email-fields,
+  .contact-country-fields {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  .name-fields > div,
+  .org-email-fields > div,
+  .contact-country-fields > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
 </style>
 
-
-<form class="sisa-form" action="https://go.sisainfosec.com/l/1054173/2025-08-18/2rc7lj" method="post">
+<form class="sisa-form" id="dynamicForm" action="#" method="post">
     
     <!-- Name Fields -->
     <div class="name-fields">
@@ -128,7 +121,6 @@ button[type="submit"]:hover {
                 <option value="United States">United States</option>
                 <option value="United Kingdom">United Kingdom</option>
                 <option value="Australia">Australia</option>
-                <!-- Add more countries as needed -->
             </select>
         </div>
     </div>
@@ -153,12 +145,22 @@ button[type="submit"]:hover {
 </form>
 
 <script>
-// Auto-fill utm_source from URL query string
+// Auto-fill utm_source + dynamic form action
 (function() {
     const params = new URLSearchParams(window.location.search);
+
+    // 1. Set UTM source
     const utmSource = params.get("utm_source");
     if (utmSource) {
         document.getElementById("utm_source").value = utmSource;
+    }
+
+    // 2. Set form action dynamically
+    const endpoint = params.get("endpoint");
+    if (endpoint) {
+        document.getElementById("dynamicForm").action = decodeURIComponent(endpoint);
+    } else {
+        console.warn("⚠️ No endpoint provided in URL, form action not set!");
     }
 })();
 </script>
