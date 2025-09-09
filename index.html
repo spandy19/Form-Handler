@@ -1,151 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SISA Form</title>
-<style>
-  form {
-    max-width: 600px;
-    margin: auto;
-  }
-  .serif {
-    font-family: Times, "Times New Roman", Georgia, serif;
-  }
-  .form-row, .name-fields, .org-email-fields, .contact-country-fields {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 15px;
-  }
-  .form-group, .name-fields > div, .org-email-fields > div, .contact-country-fields > div {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  label {
-    font-weight: normal;
-    margin-bottom: 5px;
-  }
-  input, select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  .checkbox {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 15px 0;
-  }
-  .checkbox label {
-    font-size: 15px;
-  }
-  .checkbox input[type="checkbox"] {
-    transform: scale(1.2);
-    cursor: pointer;
-  }
-  .terms {
-    font-size: 12px;
-    color: #555;
-    margin-bottom: 15px;
-  }
-  button[type="submit"] {
-    background-color: #0073e6;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  button[type="submit"]:hover {
-    background-color: #005bb5;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>My Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    form { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+    input, button { width: 100%; padding: 10px; margin: 5px 0; }
+  </style>
 </head>
 <body>
-
-<form class="sisa-form" id="sisaForm" method="post">
-
-    <!-- Name Fields -->
-    <div class="name-fields">
-        <div>
-            <label>First Name *</label>
-            <input type="text" name="First" required placeholder="First">
-        </div>
-        <div>
-            <label>Last Name *</label>
-            <input type="text" name="Last" required placeholder="Last">
-        </div>
-    </div>
+  <form action="https://go.sisainfosec.com/l/1054173/2025-08-11/2rbqlp" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
     
-    <!-- Organization & Email -->
-    <div class="org-email-fields">
-        <div>
-            <label>Organization *</label>
-            <input type="text" name="Organization" required placeholder="Organization Name">
-        </div>
-        <div>
-            <label>Work Email *</label>
-            <input type="email" name="Work Email" required placeholder="Work Email">
-        </div>
-    </div>
-    
-    <!-- Contact & Country -->
-    <div class="contact-country-fields">
-        <div>
-            <label>Contact No.</label>
-            <input type="text" name="Contact No." placeholder="Contact No.">
-        </div>
-        <div>
-            <label>Country *</label>
-            <select name="Country" required>
-                <option value="">Choose one</option>
-                <option value="India">India</option>
-                <option value="United States">United States</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="Australia">Australia</option>
-            </select>
-        </div>
-    </div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
 
-    <!-- UTM Source (hidden) -->
-    <input type="hidden" name="utm_source" id="utm_source" value="">
-
-    <!-- Opt-in -->
-    <div class="checkbox">
-        <input type="checkbox" name="opt_in" value="true">
-        <label>I'm looking forward to receiving emails and newsletters from SISA</label>
-    </div>
-    
-    <!-- Terms -->
-    <p class="terms">
-        By submitting this form, I agree to the 
-        <a href="https://www.sisainfosec.com/terms-of-use/" target="_blank">Website Terms of Conditions</a> 
-        and the <a href="https://www.sisainfosec.com/privacy-policy/" target="_blank">SISA Privacy Policy</a>
-    </p>
-    
     <button type="submit">Submit</button>
-</form>
-
-<script>
-// Set form action from iframe query parameter
-(function() {
-    const params = new URLSearchParams(window.location.search);
-    const endpoint = params.get("endpoint");
-    if (endpoint) {
-        document.getElementById("sisaForm").action = endpoint;
-    }
-
-    // Autofill utm_source if present
-    const utmSource = params.get("utm_source");
-    if (utmSource) {
-        document.getElementById("utm_source").value = utmSource;
-    }
-})();
-</script>
-
+  </form>
 </body>
 </html>
