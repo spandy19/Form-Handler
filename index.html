@@ -6,9 +6,17 @@
   <title>SISA Form</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    body, form, input, select, button, label {
+    body, form, button, label {
       font-family: 'Poppins', sans-serif;
     }
+    input, select {
+  padding: 8px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-size: 14px;
+  width: 100%;              /* ✅ ensures Contact + Country same width */
+  box-sizing: border-box;   /* ✅ prevents padding from breaking width */
+}
     form { max-width: 600px; margin: auto; }
     label { font-weight: normal; margin-bottom: 5px; }
     input, select {
@@ -318,6 +326,7 @@
   </script>
 </body>
 </html>
+
 
 
 
