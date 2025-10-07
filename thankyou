@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f9f9f9;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+    }
+    .thank-you {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 600px;
+    }
+    .thank-you h1 {
+      color: #0073e6;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .thank-you p {
+      color: #333;
+      font-size: 18px;
+      margin: 8px 0;
+    }
+    .asset-title {
+      color: #0073e6;
+      font-weight: bold;
+      font-size: 20px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="thank-you">
+    <h1>Thank You!</h1>
+    <p>For sharing your details and downloading:</p>
+    <p class="asset-title" id="assetTitle">Loading...</p>
+    <p>The details are shared in the email id provided.</p>
+  </div>
+
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const title = params.get("asset");
+      const assetElement = document.getElementById("assetTitle");
+
+      if (title) {
+        const decoded = decodeURIComponent(title);
+        assetElement.textContent = `"${decoded}"`;
+        document.title = `Thank You - ${decoded}`;
+      } else {
+        assetElement.textContent = '"Your Requested Asset"';
+      }
+    })();
+  </script>
+</body>
+</html>
