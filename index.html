@@ -12,16 +12,16 @@
  
     form { max-width: 600px; margin: auto; }
     label { font-weight: normal; margin-bottom: 5px; }
-    input, select {
-      input, select {
-  padding: 8px; 
-  border: 1px solid #ccc; 
-  border-radius: 5px; 
-  font-size: 14px;
-  width: 100%;              /* ✅ ensures Contact + Country same width */
-  box-sizing: border-box;   /* ✅ prevents padding from breaking width */
-}
-    }
+    /* ✅ Equal height & padding for input and select fields only */
+  input, select {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 42px; /* ensures consistent field height */
+  }
     button[type="submit"] {
       background-color: #0073e6; color: white; border: none;
       padding: 12px 24px; border-radius: 25px; font-size: 16px; cursor: pointer;
@@ -326,6 +326,7 @@
   </script>
 </body>
 </html>
+
 
 
 
