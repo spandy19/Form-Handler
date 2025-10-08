@@ -13,7 +13,12 @@
     form { max-width: 600px; margin: auto; }
     label { font-weight: normal; margin-bottom: 5px; }
     /* ✅ Equal height & padding for input and select fields only */
-  input, select {
+  /* ✅ Equal height & padding for text inputs and select fields only */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  select {
     padding: 10px 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -21,6 +26,17 @@
     width: 100%;
     box-sizing: border-box;
     height: 42px; /* ensures consistent field height */
+  }
+
+  /* ✅ Keep checkboxes normal size */
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0 5px 0 0;
+    transform: scale(1.2); /* optional, for a slight bigger checkbox */
+    cursor: pointer;
   }
     button[type="submit"] {
       background-color: #0073e6; color: white; border: none;
@@ -326,6 +342,7 @@
   </script>
 </body>
 </html>
+
 
 
 
