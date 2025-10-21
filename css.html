@@ -317,8 +317,10 @@
       const params = new URLSearchParams(window.location.search);
 
       // 1. Set UTM
-      const utmSource = params.get("utm_source");
-      if (utmSource) document.getElementById("utm_source").value = utmSource;
+      const asset = params.get("asset");
+      if (asset) {
+      document.getElementById("utm_source").value = decodeURIComponent(asset);
+      }
 
       // 2. Dynamic endpoint from WordPress iframe
       const endpoint = params.get("endpoint");
